@@ -1,4 +1,4 @@
-package com.example.toralipse.apptest1;
+package com.example.toralipse.apptest;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

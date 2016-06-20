@@ -1,4 +1,4 @@
-package com.example.toralipse.apptest1;
+package com.example.toralipse.apptest;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
