@@ -1,5 +1,7 @@
 package com.example.toralipse.apptest;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +22,10 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // action
+                Intent nextIntent = new Intent();
+                nextIntent.setAction(Intent.ACTION_VIEW);
+                nextIntent.setData(Uri.parse("http://www.yahoo.co.jp/"));
+                startActivity(nextIntent);
             }
         });
     }
