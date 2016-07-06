@@ -2,17 +2,35 @@ package com.example.toralipse.apptest;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
+    private int count=0;
     private TextView label;
+    private Button button;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        label = (TextView) findViewById(R.id.label);
+        label = (TextView)findViewById(R.id.label);
+        button = (Button)findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                count++;
+                label.setText(String.valueOf(count));
+            }
+        });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        count = 0;
+        label.setText(String.valueOf(count));
     }
 }
