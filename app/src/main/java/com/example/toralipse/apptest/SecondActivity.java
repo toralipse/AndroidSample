@@ -16,6 +16,9 @@ public class SecondActivity extends AppCompatActivity {
     private EditText url_text;
     private Button go_button;
 
+    public static final String URL_KEY = "url";
+    private String url;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,5 +43,7 @@ public class SecondActivity extends AppCompatActivity {
                 */
             }
         });
+        url = getIntent().getStringExtra("url");
+        url_text.setText(url);
     }
 }

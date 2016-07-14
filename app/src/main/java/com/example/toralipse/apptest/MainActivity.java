@@ -24,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
         pd_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent next = new Intent(Intent.ACTION_VIEW,Uri.parse("https://www.planningdev.com/"));
+                Intent next = new Intent(getApplicationContext(),SecondActivity.class);
+                next.putExtra(SecondActivity.URL_KEY,"https://www.planningdev.com/");
                 startActivity(next);
             }
         });
@@ -32,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
         google_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent next = new Intent(Intent.ACTION_VIEW,Uri.parse("https://www.google.co.jp/"));
+                Intent next = new Intent(getApplicationContext(),SecondActivity.class);
+                next.putExtra(SecondActivity.URL_KEY,"https://www.google.co.jp/");
                 startActivity(next);
             }
         });
