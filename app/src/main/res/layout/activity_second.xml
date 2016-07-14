@@ -10,19 +10,16 @@
     tools:context="com.example.toralipse.apptest.MainActivity"
     android:orientation="vertical">
 
+    <EditText
+        android:id="@+id/url_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="http://..."
+        android:inputType="textUri"/>
+
     <Button
-        android:id="@+id/pd_button"
+        android:id="@+id/go_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="P&amp;D" />
-    <Button
-        android:id="@+id/google_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Google" />
-    <Button
-        android:id="@+id/other_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Other..." />
+        android:text="Go" />
 </LinearLayout>
