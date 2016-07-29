@@ -48,33 +48,4 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-    public static class TestFragment extends Fragment {
-
-        public static Fragment onNewInstance(int color){
-            TestFragment f = new TestFragment();
-            Bundle b = new Bundle();
-            b.putInt("color",color);
-            f.setArguments(b);
-            return f;
-        }
-
-        int color;
-
-        @Override
-        public void onAttach(Activity activity) {
-            super.onAttach(activity);
-            color = getArguments().getInt("color");
-        }
-
-        @Nullable
-        @Override
-        public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View v = new View(getActivity());
-            v.setBackgroundColor(color);
-            return v;
-        }
-    }
-
-
 }
