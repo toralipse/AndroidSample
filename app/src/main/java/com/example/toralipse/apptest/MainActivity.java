@@ -1,29 +1,46 @@
 package com.example.toralipse.apptest;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView label;
-    private Button button;
-    private EditText editText;
+    List data = Arrays.asList(
+            new Item("google","http://google.com"),
+            new Item("yahoo","http://yahoo.co.jp"),
+            new Item("amazon","http://amazon.co.jp"),
+            new Item("google","http://google.com"),
+            new Item("yahoo","http://yahoo.co.jp"),
+            new Item("amazon","http://amazon.co.jp"),
+            new Item("google","http://google.com"),
+            new Item("yahoo","http://yahoo.co.jp"),
+            new Item("amazon","http://amazon.co.jp"),
+            new Item("google","http://google.com"),
+            new Item("yahoo","http://yahoo.co.jp"),
+            new Item("amazon","http://amazon.co.jp")
+    );
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        label = (TextView) findViewById(R.id.label);
-        button = (Button)findViewById(R.id.button);
-        editText = (EditText)findViewById(R.id.editText);
-        button.setOnClickListener(new View.OnClickListener() {
+        ListView list = (ListView)findViewById(R.id.list);
+        MyAdapter adapter = new MyAdapter(this,data);
+        list.setAdapter(adapter);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                // action
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Item item = (Item)parent.getItemAtPosition(position);
+                Intent next = new Intent(Intent.ACTION_VIEW, Uri.parse(item.url));
+                startActivity(next);
             }
         });
     }
