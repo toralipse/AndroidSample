@@ -28,8 +28,9 @@ public class MainActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Realm.init(this);
         RealmConfiguration realmConfig =
-                new RealmConfiguration.Builder(this)
+                new RealmConfiguration.Builder()
                         .name("sample")
                         .schemaVersion(1)
                         .deleteRealmIfMigrationNeeded()

@@ -24,4 +24,7 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
+    // https://mvnrepository.com/artifact/io.reactivex/rxkotlin
+    compile group: 'io.reactivex', name: 'rxkotlin', version: '0.60.0'
+
 }
