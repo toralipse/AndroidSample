@@ -1,6 +1,6 @@
 package com.example.toralipse.apptest;
 
-import android.os.Handler;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -31,40 +31,27 @@ public class MainActivity extends AppCompatActivity {
                 // action
                 final String url = editText.getEditableText().toString();
                 if(url == null || url.equals("") ) return;
-                final Handler handler = new Handler();
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try{
 
+                new AsyncTask<String, Void, String>() {
+                    @Override
+                    protected String doInBackground(String... params) {
+                        try {
                             OkHttpClient client = new OkHttpClient();
                             Request request = new Request.Builder()
-                                .url(url)
-                                .build();
+                                    .url(params[0])
+                                    .build();
                             Response response = client.newCall(request).execute();
-                            final String message = response.body().string();
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    label.setText(message);
-                                }
-                            });
-
-                        }catch (Exception e) {
-
-                            e.printStackTrace();
-                            final String message = "Error";
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    label.setText(message);
-                                }
-                            });
-
+                            return response.body().string();
+                        }catch (Exception e){
+                            return "Error";
                         }
-
                     }
-                }).start();
+                    @Override
+                    protected void onPostExecute(String s) {
+                        super.onPostExecute(s);
+                        label.setText(s);
+                    }
+                }.execute(url);
             }
         });
     }
